@@ -1,0 +1,42 @@
+-- -- init.lua
+-- -- Initialize the LSP config
+-- local nvim_lsp = require('lspconfig')
+-- 
+-- -- Configure the Java LSP server (jdtls)
+-- nvim_lsp.jdtls.setup({
+--   cmd = {
+--     'java', 
+--     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+--     '-Dosgi.bundles.defaultStartLevel=4',
+--     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+--     '-Dlog.protocol=true',
+--     '-Dlog.level=ALL',
+--     '-Xms1g',
+--     '-Xmx2G',
+--     '--add-modules=ALL-SYSTEM',
+--     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+--     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+--     '-jar', '/path/to/your/jdtls/plugins/org.eclipse.equinox.launcher_VERSION.jar',
+--     '-configuration', '/path/to/your/jdtls/config_linux',  -- Adjust for your OS
+--     '-data', '/path/to/your/workspace/folder'
+--   },
+--   root_dir = require('lspconfig.util').root_pattern('.git', 'pom.xml', 'build.gradle'),
+--   settings = {
+--     java = {}
+--   },
+--   init_options = {
+--     bundles = {}
+--   },
+-- })
+-- 
+-- -- Function to format the current buffer
+-- local function format_buffer()
+--   vim.lsp.buf.format({ async = true })
+-- end
+-- 
+-- -- Set the function globally if necessary
+-- _G.format_buffer = format_buffer
+-- 
+-- -- Map Ctrl+Shift+F to format the current buffer
+-- vim.api.nvim_set_keymap('n', '<C-S-f>', ':lua format_buffer()<CR>', { noremap = true, silent = true })
+-- 
