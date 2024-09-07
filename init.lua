@@ -3,11 +3,3 @@ print("hello thangatamil")
 
 
 
-
-
-
-
-
-
-
-
