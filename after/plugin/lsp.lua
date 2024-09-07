@@ -34,7 +34,7 @@ local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Initialize mason and mason-lspconfig before lsp-zero setup
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'lua_ls', 'jdtls', 'html', 'tsserver', 'eslint' },
+    ensure_installed = { 'lua_ls', 'jdtls', 'html', 'eslint' },
 })
 
 
@@ -47,10 +47,6 @@ require('lspconfig').html.setup({
 })
 
 require('lspconfig').eslint.setup({
-    capabilities = lsp_capabilities,
-})
-
-require('lspconfig').tsserver.setup({
     capabilities = lsp_capabilities,
 })
 
@@ -69,7 +65,6 @@ require('lspconfig').jdtls.setup({
             }
         }
     },
-
     on_attach = function(client, bufnr)
         -- Disable the LSP's own highlighting to avoid conflicts
         client.server_capabilities.documentHighlightProvider = false

@@ -13,8 +13,8 @@ vim.api.nvim_set_keymap('n', '<leader>s', 'va(', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ss', 'va{', { noremap = true })
 vim.keymap.set("x", "<leader>p", [["_dP]])
 -- Remap z key to insert four spaces in normal mode
-vim.api.nvim_set_keymap('n', '<Tab>', 'i<Space><Space><Space><Space><Space><Esc>',
-    { noremap = true })
+vim.api.nvim_set_keymap('n', 'z', 'i<Space><Space><Space><Space><Space><Esc>',
+     { noremap = true })
 
 vim.cmd [[
 nnoremap <leader>t :NERDTreeToggle<CR>
