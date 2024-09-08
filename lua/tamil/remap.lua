@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<A-s>", vim.cmd.vsplit)
+--vim.keymap.set("n", "<A-s>", vim.cmd.vsplit)
 vim.keymap.set("n", "<leader>c", vim.cmd.Ex)
 vim.api.nvim_set_keymap('n', 'w', 'b', { noremap = true })
 vim.api.nvim_set_keymap('n', 'dw', 'db', { noremap = true })
@@ -14,7 +14,8 @@ vim.api.nvim_set_keymap('n', '<leader>ss', 'va{', { noremap = true })
 vim.keymap.set("x", "<leader>p", [["_dP]])
 -- Remap z key to insert four spaces in normal mode
 vim.api.nvim_set_keymap('n', 'z', 'i<Space><Space><Space><Space><Space><Esc>',
-     { noremap = true })
+    { noremap = true })
+
 
 vim.cmd [[
 nnoremap <leader>t :NERDTreeToggle<CR>
@@ -44,8 +45,8 @@ vim.g.ale_fixers = {
 
 }
 
-vim.api.nvim_set_keymap('n', '<Leader>e', ':ALEFix<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>ee', ':ALEDetail<CR>', { noremap = true, silent = true })
+
+--vim.api.nvim_set_keymap('n', '<Leader>e', ':ALEFix<CR>', { noremap = true, silent = true })
 --  Function to replace the current word under the cursor
 
 
@@ -61,15 +62,7 @@ vim.api.nvim_set_keymap('n', "<leader>`", "va`", { noremap = true })
 --vim.api.nvim_set_keymap('n', "<leader>`", "va`y", { noremap = true })
 --add y to "va'y" to copy at the single click
 
--- Move selected lines up
---vim.api.nvim_set_keymap('v', '<C-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
--- Move selected lines down
---vim.api.nvim_set_keymap('v', '<C-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
-
--- Fix indentation for single line or selected multiple lines
-vim.api.nvim_set_keymap('n', '<C-i>', '==', { noremap = true, silent = true })  -- Normal mode: Fix indentation for single line
-vim.api.nvim_set_keymap('v', '<C-i>', '=gv', { noremap = true, silent = true }) -- Visual mode: Fix indentation for selected lines
 vim.api.nvim_set_keymap('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
