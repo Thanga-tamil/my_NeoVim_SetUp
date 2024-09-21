@@ -16,7 +16,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.api.nvim_set_keymap('n', 'z', 'i<Space><Space><Space><Space><Space><Esc>',
     { noremap = true })
 
-
 vim.cmd [[
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>d :NERDTreeFocus<CR>
