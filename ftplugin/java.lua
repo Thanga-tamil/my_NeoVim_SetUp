@@ -10,31 +10,22 @@ local home = os.getenv("HOME")
 local lombok_path = home .. "/.local/lib/lombok/lombok.jar"
 
 require 'lspconfig'.jdtls.setup {
+    capabilities = lsp_capabilities,
     cmd = {
         "java",
-        -- Increase memory allocation
-        "-Xms2g",
-        "-Xmx4G",
-
-        -- Use G1 garbage collector for better memory management
-        "-XX:+UseG1GC",
-
-        -- Enable Lombok (comment out to disable for troubleshooting)
+        "-Xms2g",       -- Updated memory limits
+        "-Xmx4g",       -- Increased memory allocation for stability
+        "-XX:+UseG1GC", -- G1GC for better memory management
         "-javaagent:" .. lombok_path,
-
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
-        "-Dlog.level=FINE", -- Enable detailed logging to troubleshoot server restarts
-        "-Xms1g",
-        "-Xmx2G",
+        "-Dlog.level=FINE", -- Detailed logging for troubleshooting
         "-jar", home .. "/.local/opt/jdtls-launcher/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar",
         "-configuration", home .. "/.local/opt/jdtls-launcher/jdtls/config_linux",
-        "-data", home .. "/thangam/java-with-me" -- Replace with your actual workspace folder
+        "-data", home .. "/thangam/java-with-me" -- Your workspace folder
     },
-
-    root_dir = require 'lspconfig'.util.root_pattern(".git", "mvnw", "gradlew", "build.gradle"),
-
+    root_dir = require 'lspconfig'.util.root_pattern(".git", "mvnw", "gradlew", "build.gradle", "pom.xml"),
     settings = {
         java = {
             configuration = {
@@ -45,10 +36,8 @@ require 'lspconfig'.jdtls.setup {
                     }
                 },
             },
-            -- Enable annotation processing
-            contentProvider = { preferred = "fernflower" }, -- Use a stable decompiler
-            errors = { includeStackTrace = true },
-            autobuild = { enabled = false },
+            contentProvider = { preferred = "fernflower" }, -- Stable decompiler
+            autobuild = { enabled = false },                -- Disable autobuild to prevent restarts
             saveActions = {
                 organizeImports = true
             },
@@ -79,21 +68,16 @@ require 'lspconfig'.jdtls.setup {
             },
         },
     },
-
-    -- Optional: Set up event handling if the LSP supports on_attach functionality
     on_attach = function(client, bufnr)
-        -- Add custom key mappings or buffer-specific settings if needed
-        -- For example: map keys for easier navigation or functionality
+        -- Optional: Disable highlight and semanticTokensProvider to reduce LSP server load
+        client.server_capabilities.documentHighlightProvider = false
+        client.server_capabilities.semanticTokensProvider = false
+        -- Additional buffer settings can go here
     end,
-
-    -- Add init_options for additional LSP config
     init_options = {
+        workspace = home .. "/thangam/java-with-me", -- Define workspace
         jvm_args = {
-            "-Xbootclasspath/a:" .. lombok_path      -- Add Lombok to the classpath
-        },
-        workspace = home .. "/thangam/java-with-me", -- Define workspace location
-        jvm_args = {
-            -- Additional JVM arguments if necessary
+            "-Xbootclasspath/a:" .. lombok_path      -- Add Lombok to classpath
         }
     }
 }
