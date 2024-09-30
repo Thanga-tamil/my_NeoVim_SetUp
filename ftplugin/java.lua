@@ -25,7 +25,7 @@ require 'lspconfig'.jdtls.setup {
         "-configuration", home .. "/.local/opt/jdtls-launcher/jdtls/config_linux",
         "-data", home .. "/thangam/java-with-me" -- Your workspace folder
     },
-    root_dir = require 'lspconfig'.util.root_pattern(".git", "mvnw", "gradlew", "build.gradle", "pom.xml"),
+    root_dir = require 'lspconfig'.util.root_pattern(".git", "mvnw", "pom.xml"),
     settings = {
         java = {
             configuration = {

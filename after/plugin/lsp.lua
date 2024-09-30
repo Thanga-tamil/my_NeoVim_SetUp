@@ -50,27 +50,27 @@ require('lspconfig').eslint.setup({
     capabilities = lsp_capabilities,
 })
 
--- require('lspconfig').jdtls.setup({
---     capabilities = lsp_capabilities,
---     cmd = { 'jdtls' },
---     root_dir = require('lspconfig.util').root_pattern('.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle'),
--- 
---     settings = {
---         java = {
---             contentProvider = {
---                 preferred = 'fernflower'
---             },
---             configuration = {
---                 update_build_configuration = true
---             }
---         }
---     },
---     on_attach = function(client, bufnr)
---         -- Disable the LSP's own highlighting to avoid conflicts
---         client.server_capabilities.documentHighlightProvider = false
---         client.server_capabilities.semanticTokensProvider = false
---     end,
--- })
+require('lspconfig').jdtls.setup({
+    capabilities = lsp_capabilities,
+    cmd = { 'jdtls' },
+    root_dir = require('lspconfig.util').root_pattern('.git', 'mvnw', 'pom.xml'),
+
+    settings = {
+        java = {
+            contentProvider = {
+                preferred = 'fernflower'
+            },
+            configuration = {
+                update_build_configuration = true
+            }
+        }
+    },
+    on_attach = function(client, bufnr)
+        -- Disable the LSP's own highlighting to avoid conflicts
+        client.server_capabilities.documentHighlightProvider = false
+        client.server_capabilities.semanticTokensProvider = false
+    end,
+})
 
 -- Setup nvim-cmp
 local cmp = require('cmp')
