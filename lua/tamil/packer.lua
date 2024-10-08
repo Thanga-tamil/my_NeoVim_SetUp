@@ -59,6 +59,9 @@ return require('packer').startup(function(use)
 
     use('tpope/vim-fugitive') -- for git
 
+    --grepper
+    use('mhinz/vim-grepper')
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
