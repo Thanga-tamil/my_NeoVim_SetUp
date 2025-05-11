@@ -1,4 +1,4 @@
-wget, curl (to download pretty much everything from internet)
+wget, curl, axel, aria2c (to download pretty much everything from internet)
 
 ssh thangam@{IP address}
 
