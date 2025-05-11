@@ -31,7 +31,7 @@ cmd {filename} {filename} (compare two files), diff {f}{f} (this tell all the di
 sudo find / -name "spring*" (to find all the file related with particular name)
 sudo find . -type f -name ".*" (find all hidden file) // well this is a structure
 
-chmode +x{file}  (to make the file executalble)
+chmod +x{file}  (to make the file executalble)
 
 echo {2+2} | bc (to calculate :))
 
